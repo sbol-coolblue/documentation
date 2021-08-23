@@ -57,7 +57,23 @@ For a full list of supported libraries and processor architectures, see [Compati
 
 1. Add the `Datadog.Instrumentation` [NuGet package][2] to your application.
 
-2. Enable instrumentation in your service by setting the required environment variables. See the section *Instrumenting your service*, below.
+2. Enable instrumentation in your service by setting the required environment variables. See the section *Instrumenting your service* to configure environment variables for your application environment.
+
+  Name                       | Value
+  ---------------------------|------
+  `CORECLR_ENABLE_PROFILING` | `1`
+  `CORECLR_PROFILER`         | `{846F5F1C-F9AE-4B07-969E-05C26BC060D8}`
+  `CORECLR_PROFILER_PATH`    | System-dependent, see step below
+  `DD_INTEGRATIONS`          | `<appPath>/datadog/integrations.json`
+  `DD_DOTNET_TRACER_HOME`    | `<appPath>/datadog`
+
+  Operating System and Processor Architecture | CORECLR_PROFILER_PATH Value
+  --------------------------------------------|------
+  Alpine Linux x64                            | `<appPath>/datadog/linux-musl-x64/Datadog.Trace.ClrProfiler.Native.so`
+  Linux x64                                   | `<appPath>/datadog/linux-x64/Datadog.Trace.ClrProfiler.Native.so`
+  Linux ARM64                                 | `<appPath>/datadog/linux-arm64/Datadog.Trace.ClrProfiler.Native.so`
+  Windows x64                                 | `<appPath>/datadog/win-x64/Datadog.Trace.ClrProfiler.Native.dll`
+  Windows x86                                 | `<appPath>/datadog/win-x86/Datadog.Trace.ClrProfiler.Native.dll`
 
 3. Create application load.
 
@@ -75,7 +91,12 @@ For a full list of supported libraries and processor architectures, see [Compati
 
 2. Run the .NET Tracer MSI installer with administrator privileges.
 
-3. Enable instrumentation in your service by setting the required environment variables. See the section *Instrumenting your service*, below.
+3. Enable instrumentation in your service by setting the required environment variables. See the section *Instrumenting your service* to configure environment variables for your application environment.
+
+  Name                       | Value
+  ---------------------------|------
+  `CORECLR_ENABLE_PROFILING` | `1`
+  `CORECLR_PROFILER`         | `{846F5F1C-F9AE-4B07-969E-05C26BC060D8}`
 
 4. Create application load.
 
@@ -116,7 +137,15 @@ For a full list of supported libraries and processor architectures, see [Compati
 
 2. Run the `/opt/datadog/createLogPath.sh` script, which creates a directory for the log files and sets appropriate directory permissions. The default directory for log files is `/var/log/datadog/dotnet`.
 
-3. Enable instrumentation in your service by setting the required environment variables. See the section *Instrumenting your service*, below.
+3. Enable instrumentation in your service by setting the required environment variables. See the section *Instrumenting your service* to configure environment variables for your application environment.
+
+  Name                       | Value
+  ---------------------------|------
+  `CORECLR_ENABLE_PROFILING` | `1`
+  `CORECLR_PROFILER`         | `{846F5F1C-F9AE-4B07-969E-05C26BC060D8}`
+  `CORECLR_PROFILER_PATH`    | `/opt/datadog/Datadog.Trace.ClrProfiler.Native.so`
+  `DD_INTEGRATIONS`          | `/opt/datadog/integrations.json`
+  `DD_DOTNET_TRACER_HOME`    | `/opt/datadog`
 
 4. Create application load.
 
@@ -133,35 +162,13 @@ For a full list of supported libraries and processor architectures, see [Compati
 
 {{< tabs >}}
 
-{{% tab "NuGet package" %}}
-
-The following environment variables are required to enable automatic instrumentation:
-
-  Name                       | Value
-  ---------------------------|------
-  `CORECLR_ENABLE_PROFILING` | `1`
-  `CORECLR_PROFILER`         | `{846F5F1C-F9AE-4B07-969E-05C26BC060D8}`
-  `CORECLR_PROFILER_PATH`    | System-dependent, see step below
-  `DD_INTEGRATIONS`          | `<appPath>/datadog/integrations.json`
-  `DD_DOTNET_TRACER_HOME`    | `<appPath>/datadog`
-
-Additionally, set the `CORECLR_PROFILER_PATH` environment variable according to the operating system and processor architecture:
-
-  Operating System and Processor Architecture | Value
-  --------------------------------------------|------
-  Alpine Linux x64                            | `<appPath>/datadog/linux-musl-x64/Datadog.Trace.ClrProfiler.Native.so`
-  Linux x64                                   | `<appPath>/datadog/linux-x64/Datadog.Trace.ClrProfiler.Native.so`
-  Linux ARM64                                 | `<appPath>/datadog/linux-arm64/Datadog.Trace.ClrProfiler.Native.so`
-  Windows x64                                 | `<appPath>/datadog/win-x64/Datadog.Trace.ClrProfiler.Native.dll`
-  Windows x86                                 | `<appPath>/datadog/win-x86/Datadog.Trace.ClrProfiler.Native.dll`
-
-{{% /tab %}}
-
 {{% tab "Windows" %}}
 
 #### Internet Information Services (IIS)
 
-To automatically instrument applications hosted in IIS, completely stop IIS and then start it by running the following commands as an administrator:
+*Datadog only supports the Windows MSI installation for IIS applications. Do not use a NuGet package installation to instrument IIS applications.*
+
+To automatically instrument applications hosted in IIS, no additional environment variables are needed. Completely stop IIS and then start it by running the following commands as an administrator:
 
 <div class="alert alert-warning">
   <strong>Note:</strong> You must use a stop and start command. A reset or restart command will not always work.
