@@ -802,42 +802,42 @@ main:
     identifier: integration_guides
     parent: integrations_top_level
     weight: 1
-  - name: Request Datadog Integrations
-    url: integrations/guide/requests/
-    parent: integration_guides
-    weight: 10
-  - name: AWS CloudWatch Metric Streams with Kinesis Data Firehose
-    url: integrations/guide/aws-cloudwatch-metric-streams-with-kinesis-data-firehose/
-    parent: integration_guides
-    weight: 11
-  - name: Amazon CloudFormation
-    url: integrations/guide/amazon_cloudformation/
-    parent: integration_guides
-    weight: 12
-  - name: Azure Portal
-    url: integrations/guide/azure-portal/
-    parent: integration_guides
-    weight: 13
-  - name: Mongo Custom Metrics
-    url: integrations/guide/mongo-custom-query-collection/
-    parent: integration_guides
-    weight: 14
-  - name: Prometheus Metrics
-    url: integrations/guide/prometheus-metrics/
-    parent: integration_guides
-    weight: 15
-  - name: Prometheus and OpenMetrics from a Host
-    url: integrations/guide/prometheus-host-collection/
-    parent: integration_guides
-    weight: 16
-  - name: SQL Server Custom Metrics
-    url: integrations/guide/collect-sql-server-custom-metrics/
-    parent: integration_guides
-    weight: 17
-  - name: Freshservice Tickets Using Webhooks
-    url: integrations/guide/freshservice-tickets-using-webhooks/
-    parent: integration_guides
-    weight: 18
+  # - name: Request Datadog Integrations
+  #   url: integrations/guide/requests/
+  #   parent: integration_guides
+  #   weight: 10
+  # - name: AWS CloudWatch Metric Streams with Kinesis Data Firehose
+  #   url: integrations/guide/aws-cloudwatch-metric-streams-with-kinesis-data-firehose/
+  #   parent: integration_guides
+  #   weight: 11
+  # - name: Amazon CloudFormation
+  #   url: integrations/guide/amazon_cloudformation/
+  #   parent: integration_guides
+  #   weight: 12
+  # - name: Azure Portal
+  #   url: integrations/guide/azure-portal/
+  #   parent: integration_guides
+  #   weight: 13
+  # - name: Mongo Custom Metrics
+  #   url: integrations/guide/mongo-custom-query-collection/
+  #   parent: integration_guides
+  #   weight: 14
+  # - name: Prometheus Metrics
+  #   url: integrations/guide/prometheus-metrics/
+  #   parent: integration_guides
+  #   weight: 15
+  # - name: Prometheus and OpenMetrics from a Host
+  #   url: integrations/guide/prometheus-host-collection/
+  #   parent: integration_guides
+  #   weight: 16
+  # - name: SQL Server Custom Metrics
+  #   url: integrations/guide/collect-sql-server-custom-metrics/
+  #   parent: integration_guides
+  #   weight: 17
+  # - name: Freshservice Tickets Using Webhooks
+  #   url: integrations/guide/freshservice-tickets-using-webhooks/
+  #   parent: integration_guides
+  #   weight: 18
   - name: Watchdog
     url: watchdog/
     identifier: watchdog_top_level
@@ -1251,22 +1251,22 @@ main:
     identifier: serverless_guides
     parent: serverless
     weight: 9
-  - name: Datadog Forwarder - Node
-    url: serverless/guide/datadog_forwarder_node/
-    parent: serverless_guides
-    weight: 10
-  - name: Datadog Forwarder - Python
-    url: serverless/guide/datadog_forwarder_python/
-    parent: serverless_guides
-    weight: 11
-  - name: Migrating to the Datadog Lambda Extension
-    url: serverless/guide/extension_motivation/
-    parent: serverless_guides
-    weight: 12
-  - name: Migrating from the Datadog Forwarder to the Datadog Lambda Extension
-    url: serverless/guide/forwarder_extension_migration/
-    parent: serverless_guides
-    weight: 13
+  # - name: Datadog Forwarder - Node
+  #   url: serverless/guide/datadog_forwarder_node/
+  #   parent: serverless_guides
+  #   weight: 10
+  # - name: Datadog Forwarder - Python
+  #   url: serverless/guide/datadog_forwarder_python/
+  #   parent: serverless_guides
+  #   weight: 11
+  # - name: Migrating to the Datadog Lambda Extension
+  #   url: serverless/guide/extension_motivation/
+  #   parent: serverless_guides
+  #   weight: 12
+  # - name: Migrating from the Datadog Forwarder to the Datadog Lambda Extension
+  #   url: serverless/guide/forwarder_extension_migration/
+  #   parent: serverless_guides
+  #   weight: 13
   - name: Metrics
     url: metrics/
     identifier: metrics_top_level

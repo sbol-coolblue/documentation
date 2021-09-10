@@ -145,8 +145,15 @@ function getPathElement() {
     let aPath = document.querySelector(`.side [data-path="${path}"]`);
     let maPath = document.querySelector(`header [data-path="${path}"]`);
 
+    // TODO:  isolate only the agent/guide part of URL, use this to set aPath and maPath.  or see why we have to do this in the first place...
+    if (path.includes('/guide')) {
+        console.log(`path = ${path}`);
+        const dataPathString = path.substr(0, path.indexOf('guide'));
+        console.log(`dataPathString = ${dataPathString}/guide`);
+    }
+
     // TODO: fix exceptions for specific nav links that have the same url but both open the same place
-     if (path.includes('agent/guide')) {
+    if (path.includes('agent/guide')) {
         aPath = document.querySelector('.side [data-path*="agent/guide"]');
         maPath = document.querySelector('header [data-path*="agent/guide"]');
     } 
@@ -175,7 +182,6 @@ function getPathElement() {
         );
     }
 
-
     if (path.includes('developers/guide')) {
         aPath = document.querySelector('.side [data-path*="developers/guide"]');
         maPath = document.querySelector(
@@ -190,6 +196,11 @@ function getPathElement() {
         );
     }
 
+    if (path.includes('serverless/guide/')) {
+        console.log('path includes serverless/guide.');
+        aPath = document.querySelector('.side [data-path*="serverless/guide"]');
+        maPath = document.querySelector('header [data-path*="serverless/guide"]');
+    }
 
     // if url is domain + /integrations/**
     if (
@@ -208,11 +219,15 @@ function getPathElement() {
     }
     
     if (aPath) {
+        console.log('aPath found at the end.  aPath:')
+        console.log(aPath)
         aPath.classList.add('active');
         hasParentLi(aPath);
     }
 
     if (maPath) {
+        console.log('maPath found at the end.  maPath:')
+        console.log(maPath)
         maPath.classList.add('active');
         hasParentLi(maPath);
     }
