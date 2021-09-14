@@ -145,33 +145,33 @@ function getPathElement() {
     let aPath = document.querySelector(`.side [data-path="${path}"]`);
     let maPath = document.querySelector(`header [data-path="${path}"]`);
 
-    // TODO:  isolate only the agent/guide part of URL, use this to set aPath and maPath.  or see why we have to do this in the first place...
     if (path.includes('/guide')) {
-        console.log(`path = ${path}`);
         const dataPathString = path.substr(0, path.indexOf('guide'));
-        console.log(`dataPathString = ${dataPathString}/guide`);
+
+        aPath = document.querySelector(`.side [data-path*="${dataPathString}"]`);
+        maPath = document.querySelector(`header [data-path*="${dataPathString}"]`); 
     }
 
     // TODO: fix exceptions for specific nav links that have the same url but both open the same place
-    if (path.includes('agent/guide')) {
-        aPath = document.querySelector('.side [data-path*="agent/guide"]');
-        maPath = document.querySelector('header [data-path*="agent/guide"]');
-    } 
+    // if (path.includes('agent/guide')) {
+    //     aPath = document.querySelector('.side [data-path*="agent/guide"]');
+    //     maPath = document.querySelector('header [data-path*="agent/guide"]');
+    // } 
 
-    if (path.includes('tracing/guide')) {
-        aPath = document.querySelector('.side [data-path*="tracing/guide"]');
-        maPath = document.querySelector('header [data-path*="tracing/guide"]');
-    }
+    // if (path.includes('tracing/guide')) {
+    //     aPath = document.querySelector('.side [data-path*="tracing/guide"]');
+    //     maPath = document.querySelector('header [data-path*="tracing/guide"]');
+    // }
 
-    if (path.includes('monitors/guide')) {
-        aPath = document.querySelector('.side [data-path*="monitors/guide"]');
-        maPath = document.querySelector('header [data-path*="monitors/guide"]');
-    }
+    // if (path.includes('monitors/guide')) {
+    //     aPath = document.querySelector('.side [data-path*="monitors/guide"]');
+    //     maPath = document.querySelector('header [data-path*="monitors/guide"]');
+    // }
 
-    if (path.includes('logs/guide')) {
-        aPath = document.querySelector('.side [data-path*="logs/guide"]');
-        maPath = document.querySelector('header [data-path*="logs/guide"]');
-    }
+    // if (path.includes('logs/guide')) {
+    //     aPath = document.querySelector('.side [data-path*="logs/guide"]');
+    //     maPath = document.querySelector('header [data-path*="logs/guide"]');
+    // }
 
     if (path.includes('account_management/billing')) {
         aPath = document.querySelector(
@@ -182,25 +182,25 @@ function getPathElement() {
         );
     }
 
-    if (path.includes('developers/guide')) {
-        aPath = document.querySelector('.side [data-path*="developers/guide"]');
-        maPath = document.querySelector(
-            'header [data-path*="developers/guide"]'
-        );
-    }
+    // if (path.includes('developers/guide')) {
+    //     aPath = document.querySelector('.side [data-path*="developers/guide"]');
+    //     maPath = document.querySelector(
+    //         'header [data-path*="developers/guide"]'
+    //     );
+    // }
 
-    if (path.includes('synthetics/guide')) {
-        aPath = document.querySelector('.side [data-path*="synthetics/guide"]');
-        maPath = document.querySelector(
-            'header [data-path*="synthetics/guide"]'
-        );
-    }
+    // if (path.includes('synthetics/guide')) {
+    //     aPath = document.querySelector('.side [data-path*="synthetics/guide"]');
+    //     maPath = document.querySelector(
+    //         'header [data-path*="synthetics/guide"]'
+    //     );
+    // }
 
-    if (path.includes('serverless/guide/')) {
-        console.log('path includes serverless/guide.');
-        aPath = document.querySelector('.side [data-path*="serverless/guide"]');
-        maPath = document.querySelector('header [data-path*="serverless/guide"]');
-    }
+    // if (path.includes('serverless/guide/')) {
+    //     console.log('path includes serverless/guide.');
+    //     aPath = document.querySelector('.side [data-path*="serverless/guide"]');
+    //     maPath = document.querySelector('header [data-path*="serverless/guide"]');
+    // }
 
     // if url is domain + /integrations/**
     if (
@@ -219,15 +219,11 @@ function getPathElement() {
     }
     
     if (aPath) {
-        console.log('aPath found at the end.  aPath:')
-        console.log(aPath)
         aPath.classList.add('active');
         hasParentLi(aPath);
     }
 
     if (maPath) {
-        console.log('maPath found at the end.  maPath:')
-        console.log(maPath)
         maPath.classList.add('active');
         hasParentLi(maPath);
     }
