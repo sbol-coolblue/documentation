@@ -142,14 +142,17 @@ function getPathElement() {
     path = path.replace(/^\//, '');
     path = path.replace(/\/$/, '');
 
-    let aPath = document.querySelector(`.side [data-path="${path}"]`);
-    let maPath = document.querySelector(`header [data-path="${path}"]`);
+    console.log(`Pathname before processing = ${path}`);
+
+    let sideNavPathElement = document.querySelector(`.side [data-path="${path}"]`);
+    let mobileNavPathElement = document.querySelector(`header [data-path="${path}"]`);
 
     if (path.includes('/guide')) {
+        console.log('Path includes /guide')
         const dataPathString = path.substr(0, path.indexOf('guide'));
 
-        aPath = document.querySelector(`.side [data-path*="${dataPathString}"]`);
-        maPath = document.querySelector(`header [data-path*="${dataPathString}"]`); 
+        sideNavPathElement = document.querySelector(`.side [data-path*="${dataPathString}"]`);
+        mobileNavPathElement = document.querySelector(`header [data-path*="${dataPathString}"]`); 
     }
 
     // TODO: fix exceptions for specific nav links that have the same url but both open the same place
@@ -174,10 +177,10 @@ function getPathElement() {
     // }
 
     if (path.includes('account_management/billing')) {
-        aPath = document.querySelector(
+        sideNavPathElement = document.querySelector(
             '.side [data-path*="account_management/billing"]'
         );
-        maPath = document.querySelector(
+        mobileNavPathElement = document.querySelector(
             'header [data-path*="account_management/billing"]'
         );
     }
@@ -210,22 +213,26 @@ function getPathElement() {
             `${replaceURL(domain)}/integrations/guide`
         )
     ) {
-        aPath = document.querySelector(
+        sideNavPathElement = document.querySelector(
             '.side .nav-top-level > [data-path*="integrations"]'
         );
-        maPath = document.querySelector(
+        mobileNavPathElement = document.querySelector(
             'header .nav-top-level > [data-path*="integrations"]'
         );
     }
     
-    if (aPath) {
-        aPath.classList.add('active');
-        hasParentLi(aPath);
+    if (sideNavPathElement) {
+        console.log(`aPath found.`)
+        console.log(sideNavPathElement)
+        sideNavPathElement.classList.add('active');
+        hasParentLi(sideNavPathElement);
     }
 
-    if (maPath) {
-        maPath.classList.add('active');
-        hasParentLi(maPath);
+    if (mobileNavPathElement) {
+        console.log(`maPath found.`)
+        console.log(mobileNavPathElement)
+        mobileNavPathElement.classList.add('active');
+        hasParentLi(mobileNavPathElement);
     }
 }
 
