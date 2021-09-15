@@ -52,6 +52,7 @@ To begin configuration of unified service tagging, choose your environment:
 
 - [Containerized](#containerized-environment)
 - [Non-Containerized](#non-containerized-environment)
+- [Serverless](#serverless-environment)
 
 ### Containerized environment
 
